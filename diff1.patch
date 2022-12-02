@@ -1,0 +1,20 @@
+--- linux-5.19.9/kernel.sys.c  2022-11-24 16:03:12.039995208 +530
++++ oldkernel/linux-5.19.9/kernel/sys.c 2022-11-24 20:01:00.113784845 +530
+@@ -2788,29 +2788,4 @@
+  return 0;
+ }
+ #endif /*CONFIG_COMPAT */
+-SYSCALL_DEFINE2(kernel_2D_memcpy, float*, matrix1, float*, matrix2)
+-{
+-  float merijon[4][4];
+-  if(copy_from_user(&merijon, matrix2, sizeof(merijon))!=0)
+-  {
+-    return -EFAULT;
+-  }
+-
+-  if(copy_to_user(matrix1, &merijon, sizeof(merijon))!=0)
+-  {
+-    return -EFAULT;
+-  } 
+-}
+-
